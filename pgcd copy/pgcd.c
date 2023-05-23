@@ -25,8 +25,10 @@ int	main(int ac, char **v)
 			}
 			printf("%d", tmp);
 		}
+		printf("\n");
 	}
-	printf("\n");
+	else
+		printf("\n");
 }
 
 // while (n2 != 0)
