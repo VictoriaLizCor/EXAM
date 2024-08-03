@@ -1,4 +1,16 @@
 #include "TargetGenerator.hpp"
+#include <typeinfo>
+
+static void checkType(ATarget* target)
+{
+	// if (typeid(*target) == typeid(ATarget*))
+	// 	std::cout << typeid(*target).name() << " is Pointer\n";
+	// if (typeid(*target) == typeid(ATarget))
+	// 	std::cout << typeid(*target).name() << " is Reference\n";
+	std::cout << typeid(&target).name() << "\n";
+	std::cout << typeid(*target).name() << "\n";
+	std::cout << (typeid(*target)==typeid(ATarget)) << "\n";
+}
 
 TargetGenerator::TargetGenerator()
 {
@@ -31,14 +43,15 @@ void TargetGenerator::learnTargetType(ATarget* toLearn)
 {
 	if (toLearn)
 	{
+		checkType(toLearn);
 		for (size_t i = 0; i < _sizeTargets; ++i)
 		{
-			if (Targets[i] && toLearn->getType() == Targets[i]->getType())
-			{
-				// if (Targets[i] != toLearn)
-				// 	delete toLearn;/*  */
-				return ;
-			}
+			// if (Targets[i] && toLearn->getType() == Targets[i]->getType())
+			// {
+			// 	// if (Targets[i] != toLearn)
+			// 	// 	delete toLearn;/*  */
+			// 	return ;
+			// }
 			if (Targets[i] == NULL)
 			{
 				Targets[i] = toLearn;
@@ -85,7 +98,7 @@ void TargetGenerator::checkTargets(void)
 		{
 			std::cout << i << "-";
 			if (Targets[i])
-				std::cout << Targets[i]->getType() << " ";
+				std::cout << typeid(*Targets[i]).name() << " ";
 			else
 				std::cout << "NULL" << " ";
 		}

@@ -1,12 +1,5 @@
 #include "SpellBook.hpp"
-// #include <type_traits>
 
-// void checkType()
-// {
-// 	std::cout << std::boolalpha;
-// 	std::cout << "Is pointer: " << std::is_pointer<int*>::value << std::endl;
-// 	std::cout << "Is reference: " << std::is_reference<int&>::value << std::endl;
-// }
 
 SpellBook::SpellBook() {
 	for (size_t i = 0; i < _sizeSpells; ++i)

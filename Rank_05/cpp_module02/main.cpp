@@ -14,11 +14,13 @@ int main()
   Warlock richard("Richard", "foo");
   richard.setTitle("Hello, I'm Richard the Warlock!");
   BrickWall model1;
+  BrickWall* d = new BrickWall();
 
   Polymorph* polymorph = new Polymorph();
   TargetGenerator tarGen;
 
   tarGen.learnTargetType(&model1);
+  tarGen.learnTargetType(d);
   richard.learnSpell(polymorph);
 
   Fireball* fireball = new Fireball();
