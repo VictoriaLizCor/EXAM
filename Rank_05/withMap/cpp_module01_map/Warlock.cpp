@@ -14,9 +14,8 @@ _name(name), _title(title)
 {
 	std::cout << _name << ": " << "This looks like another boring day." << std::endl;
 	typedef std::map<std::string, ASpell*>::iterator ite;
-	for (ite it = _spells.begin(); it != _spells.end(); ++it) {
+	for (ite it = _spells.begin(); it != _spells.end(); ++it)
 		delete it->second;
-	}
 	_spells.clear();
 }
 
