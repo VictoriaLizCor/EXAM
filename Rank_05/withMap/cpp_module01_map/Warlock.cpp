@@ -13,7 +13,8 @@ Warlock::Warlock(std::string const& name, std::string const& title):
 _name(name), _title(title)
 {
 	std::cout << _name << ": " << "This looks like another boring day." << std::endl;
-	for (std::map<std::string, ASpell*>::iterator it = _spells.begin(); it != _spells.end(); ++it) {
+	typedef std::map<std::string, ASpell*>::iterator ite;
+	for (ite it = _spells.begin(); it != _spells.end(); ++it) {
 		delete it->second;
 	}
 	_spells.clear();
@@ -47,14 +48,21 @@ void Warlock::setTitle(std::string const& title)
 void Warlock::learnSpell(ASpell* spell)
 {
 	if (spell)
+	{
 		if (_spells.find(spell->getName()) == _spells.end())
 			_spells[spell->getName()] = spell->clone();
+		delete spell;
+	}
 }
 
 void Warlock::forgetSpell(std::string SpellName)
 {
-	if (_spells.find(SpellName) != _spells.end())
+	ite it = _spells.find(SpellName);
+	if (it != _spells.end())
+	{
+		delete it->second;
 		_spells.erase(_spells.find(SpellName));
+	}
 }
 
 void Warlock::launchSpell(std::string SpellName, ATarget const & target)

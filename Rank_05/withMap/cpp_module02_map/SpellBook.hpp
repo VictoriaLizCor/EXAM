@@ -5,6 +5,7 @@
 # include <map>
 # include "ASpell.hpp"
 
+typedef std::map<std::string, ASpell*>::iterator ite;
 class SpellBook
 {
 	private:
